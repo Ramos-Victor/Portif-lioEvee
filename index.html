@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio</title>
+    <style>
+        /* ========== FONTES ========== */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        /* ========== RESET E VARIÁVEIS CSS ========== */
+        :root {
+            /* Paleta de cores naturais e artesanais */
+            --cor-primaria: #8B7355;      /* Marrom terroso */
+            --cor-secundaria: #A0956B;    /* Bege dourado */
+            --cor-terciaria: #8FA68E;     /* Verde oliva */
+            --cor-quaternaria: #9BBDD1;   /* Azul suave */
+            --cor-neutra-escura: #5D4E37; /* Marrom escuro */
+            --cor-neutra-clara: #F5F3F0;  /* Creme */
+            --cor-branca: #FFFFFF;
+            --cor-texto: #4A4A4A;
+            --cor-texto-claro: #7A7A7A;
+            
+            /* Tipografia */
+            --fonte-titulo: 'Dancing Script', cursive;
+            --fonte-corpo: 'Inter', sans-serif;
+            
+            /* Sombras e bordas */
+            --sombra-leve: 0 2px 10px rgba(139, 115, 85, 0.1);
+            --sombra-media: 0 4px 20px rgba(139, 115, 85, 0.15);
+            --raio-borda: 12px;
+            
+            /* Transições */
+            --transicao-suave: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transicao-rapida: all 0.2s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--fonte-corpo);
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: var(--cor-neutra-clara);
+        }
+        
+        /* ========== HEADER FIXO ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(245, 243, 240, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--sombra-leve);
+            transition: var(--transicao-suave);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            text-decoration: none;
+            transition: var(--transicao-suave);
+        }
+        
+        .logo:hover {
+            color: var(--cor-secundaria);
+            transform: translateY(-2px);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transicao-suave);
+            position: relative;
+        }
+        
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--cor-primaria);
+            transition: var(--transicao-suave);
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::before {
+            width: 80%;
+        }
+        
+        nav a:hover {
+            color: var(--cor-primaria);
+        }
+        
+        /* Menu mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--cor-primaria);
+            border-radius: 2px;
+            transition: var(--transicao-suave);
+        }
+        
+        /* ========== SEÇÕES GERAIS ========== */
+        section {
+            padding: 6rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .section-title {
+            font-family: var(--fonte-titulo);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--cor-primaria);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-terciaria));
+            border-radius: 2px;
+        }
+        
+        /* ========== HOME SEÇÃO ========== */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--cor-neutra-clara) 0%, rgba(160, 149, 107, 0.1) 100%);
+            margin-top: 80px;
+        }
+        
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 4rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.2rem;
+            color: var(--cor-texto-claro);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+            color: var(--cor-branca);
+            padding: 1rem 2rem;
+            border-radius: var(--raio-borda);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicao-suave);
+            box-shadow: var(--sombra-media);
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 115, 85, 0.3);
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease 0.3s both;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--raio-borda);
+            box-shadow: var(--sombra-media);
+        }
+        
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(135deg, var(--cor-terciaria), var(--cor-quaternaria));
+            border-radius: var(--raio-borda);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        /* ========== SOBRE MIM ========== */
+        #sobre {
+            background: var(--cor-branca);
+        }
+        
+        .sobre-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .sobre-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: var(--raio-borda);
+            box-shadow: var(--sombra-media);
+        }
+        
+        .sobre-content h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+        }
+        
+        .sobre-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .tecnicas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tecnica-item {
+            background: var(--cor-neutra-clara);
+            padding: 1.5rem;
+            border-radius: var(--raio-borda);
+            text-align: center;
+            transition: var(--transicao-suave);
+            border: 2px solid transparent;
+        }
+        
+        .tecnica-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--cor-terciaria);
+            box-shadow: var(--sombra-media);
+        }
+        
+        .tecnica-item h4 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            color: var(--cor-primaria);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ========== GALERIA ========== */
+        #galeria {
+            background: var(--cor-neutra-clara);
+        }
+        
+        .galeria-filtros {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filtro-btn {
+            background: transparent;
+            border: 2px solid var(--cor-primaria);
+            color: var(--cor-primaria);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transicao-suave);
+            font-weight: 500;
+        }
+        
+        .filtro-btn.ativo,
+        .filtro-btn:hover {
+            background: var(--cor-primaria);
+            color: var(--cor-branca);
+        }
+        
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .galeria-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--raio-borda);
+            box-shadow: var(--sombra-leve);
+            transition: var(--transicao-suave);
+            cursor: pointer;
+        }
+        
+        .galeria-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-media);
+        }
+        
+        .galeria-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transicao-suave);
+        }
+        
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .galeria-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.9), rgba(143, 166, 142, 0.9));
+            color: var(--cor-branca);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transicao-suave);
+        }
+        
+        .galeria-item:hover .galeria-overlay {
+            opacity: 1;
+        }
+        
+        .galeria-overlay h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .galeria-overlay p {
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* ========== CONTATO ========== */
+        #contato {
+            background: var(--cor-branca);
+        }
+             
+        .contato-info h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contato-info {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 500px;
+        margin: 0 auto;
+        }
+
+        .contato-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .redes-sociais {
+            justify-content: center;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .rede-social {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--cor-primaria);
+            color: var(--cor-branca);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transicao-suave);
+        }
+        
+        .rede-social:hover {
+            transform: translateY(-3px);
+            background: var(--cor-secundaria);
+        }
+        
+        .formulario {
+            background: var(--cor-neutra-clara);
+            padding: 2rem;
+            border-radius: var(--raio-borda);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--cor-primaria);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--cor-secundaria);
+            border-radius: var(--raio-borda);
+            font-family: var(--fonte-corpo);
+            transition: var(--transicao-suave);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .btn-enviar {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+            color: var(--cor-branca);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--raio-borda);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicao-suave);
+            width: 100%;
+        }
+        
+        .btn-enviar:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-media);
+        }
+        
+        /* ========== RODAPÉ ========== */
+        footer {
+            background: var(--cor-primaria);
+            color: var(--cor-branca);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--cor-branca);
+            text-decoration: none;
+            transition: var(--transicao-suave);
+        }
+        
+        .footer-links a:hover {
+            color: var(--cor-secundaria);
+        }
+        
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* ========== BOTÃO VOLTAR AO TOPO ========== */
+        .voltar-topo {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--cor-primaria);
+            color: var(--cor-branca);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transicao-suave);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        
+        .voltar-topo.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .voltar-topo:hover {
+            background: var(--cor-secundaria);
+            transform: translateY(-3px);
+        }
+        
+        /* ========== ANIMAÇÕES ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            /* Header Mobile */
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cor-neutra-clara);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--sombra-media);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            /* Seções Mobile */
+            section {
+                padding: 4rem 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            /* Hero Mobile */
+            #home {
+                padding: 8rem 0 4rem;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            /* Sobre Mobile */
+            .sobre-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .sobre-image img {
+                height: 250px;
+            }
+            
+            .tecnicas {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Galeria Mobile */
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .galeria-filtros {
+                gap: 0.5rem;
+            }
+            
+            .filtro-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            /* Contato Mobile */
+            .contato-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .formulario {
+                padding: 1.5rem;
+            }
+            
+            /* Footer Mobile */
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            /* Botão topo Mobile */
+            .voltar-topo {
+                bottom: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="header-container">
+            <a href="#home" class="logo">Evee</a>
+            <nav>
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== HOME ========== -->
+    <section id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Evee</h1>
+                <p class="subtitle">Artista &#127912</p>
+                <p>Descrição</p>
+                <a href="#galeria" class="cta-button">Ver Meus Trabalhos</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=500&h=400&fit=crop&crop=center" alt="Arte em processo criativo">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SOBRE MIM ========== -->
+    <section id="sobre">
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="sobre-container">
+            <div class="sobre-image">
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=350&fit=crop&crop=center" alt="Marina Silva - Artista">
+            </div>
+            <div class="sobre-content">
+                <h3>Minha Jornada Artística</h3>
+                <p>texto</p>
+                
+                <p>texto</p>
+                
+                <p>texto</p>
+                
+                <div class="tecnicas">
+                    <div class="tecnica-item">
+                        <h4>Pintura</h4>
+                        <p>Acrílica, aquarela e técnicas mistas com materiais naturais</p>
+                    </div>
+                    <div class="tecnica-item">
+                        <h4>Artesanato</h4>
+                        <p>Cerâmica, tecelagem e trabalhos em fibra natural</p>
+                    </div>
+                    <div class="tecnica-item">
+                        <h4>Escultura</h4>
+                        <p>Madeira, argila e materiais reciclados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALERIA ========== -->
+    <section id="galeria">
+        <h2 class="section-title">Galeria de Trabalhos</h2>
+        
+        <div class="galeria-filtros">
+            <button class="filtro-btn ativo" data-filtro="todos">Todos</button>
+            <button class="filtro-btn" data-filtro="pintura">Pinturas</button>
+            <button class="filtro-btn" data-filtro="artesanato">Artesanato</button>
+        </div>
+        
+        <div class="galeria-grid" id="galeria-grid">
+            <!-- Pinturas -->
+            <div class="galeria-item" data-categoria="pintura">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=250&fit=crop&crop=center" alt="Paisagem Abstrata">
+                <div class="galeria-overlay">
+                    <h3>Paisagem Abstrata</h3>
+                    <p>Acrílica sobre tela • 2024</p>
+                </div>
+            </div>
+            
+            <div class="galeria-item" data-categoria="pintura">
+                <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=300&h=250&fit=crop&crop=center" alt="Flores Silvestres">
+                <div class="galeria-overlay">
+                    <h3>Flores Silvestres</h3>
+                    <p>Aquarela e nanquim • 2024</p>
+                </div>
+            </div>
+            
+            <div class="galeria-item" data-categoria="pintura">
+                <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=300&h=250&fit=crop&crop=center" alt="Texturas Naturais">
+                <div class="galeria-overlay">
+                    <h3>Texturas Naturais</h3>
+                    <p>Técnica mista • 2023</p>
+                </div>
+            </div>
+            
+            <!-- Artesanato -->
+            <div class="galeria-item" data-categoria="artesanato">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=250&fit=crop&crop=center" alt="Cerâmica Artesanal">
+                <div class="galeria-overlay">
+                    <h3>Cerâmica Artesanal</h3>
+                    <p>Argila queimada • 2024</p>
+                </div>
+            </div>
+            
+            <div class="galeria-item" data-categoria="artesanato">
+                <img src="https://images.unsplash.com/photo-1582561833409-3d44f5e83f4e?w=300&h=250&fit=crop&crop=center" alt="Tecelagem Natural">
+                <div class="galeria-overlay">
+                    <h3>Tecelagem Natural</h3>
+                    <p>Fibras orgânicas • 2023</p>
+                </div>
+            </div>
+            
+            <div class="galeria-item" data-categoria="artesanato">
+                <img src="https://images.unsplash.com/photo-1493816225477-944e7f2e1f84?w=300&h=250&fit=crop&crop=center" alt="Cestas Artesanais">
+                <div class="galeria-overlay">
+                    <h3>Cestas Artesanais</h3>
+                    <p>Palha e fibras • 2024</p>
+                </div>
+            </div>
+            
+            
+           
+        </div>
+    </section>
+
+    <!-- ========== CONTATO ========== -->
+    <section id="contato">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contato-container">
+            <div class="contato-info">
+                <h3>Vamos Conversar</h3>
+                <p>Estou sempre aberta para novos projetos, encomendas personalizadas e colaborações artísticas. Entre em contato para conhecer melhor meu trabalho ou para criar algo único e especial.</p>
+                
+                <p>Respondo a todas as mensagens em até 24 horas e adoro conversar sobre arte, técnicas e inspirações.</p>
+                
+                <div class="redes-sociais">
+                    <a href="#" class="rede-social" title="Instagram">📷</a>
+                    <a href="#" class="rede-social" title="Pinterest">📌</a>
+                    <a href="#" class="rede-social" title="Facebook">📘</a>
+                    <a href="#" class="rede-social" title="WhatsApp">📱</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RODAPÉ ========== -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; Evee - Artista &#127912. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== BOTÃO VOLTAR AO TOPO ========== -->
+    <button class="voltar-topo" id="voltar-topo" title="Voltar ao topo">↑</button>
+
+    <script>
+        // ========== NAVEGAÇÃO MOBILE ==========
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // ========== SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ========== BOTÃO VOLTAR AO TOPO ==========
+        const voltarTopo = document.getElementById('voltar-topo');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                voltarTopo.classList.add('visible');
+            } else {
+                voltarTopo.classList.remove('visible');
+            }
+        });
+        
+        voltarTopo.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // ========== FILTROS DA GALERIA ==========
+        const filtrosBtns = document.querySelectorAll('.filtro-btn');
+        const galeriaItems = document.querySelectorAll('.galeria-item');
+        
+        filtrosBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover classe ativa de todos os botões
+                filtrosBtns.forEach(b => b.classList.remove('ativo'));
+                // Adicionar classe ativa ao botão clicado
+                btn.classList.add('ativo');
+                
+                const filtro = btn.getAttribute('data-filtro');
+                
+                galeriaItems.forEach(item => {
+                    const categoria = item.getAttribute('data-categoria');
+                    
+                    if (filtro === 'todos' || categoria === filtro) {
+                        item.style.display = 'block';
+                        // Animação de entrada
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 100);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        // Esconder após animação
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // ========== FORMULÁRIO DE CONTATO ==========
+        const contatoForm = document.getElementById('contato-form');
+        
+        contatoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coletar dados do formulário
+            const formData = new FormData(this);
+            const nome = formData.get('nome');
+            const email = formData.get('email');
+            const assunto = formData.get('assunto');
+            const mensagem = formData.get('mensagem');
+            
+            // Simulação de envio (aqui você integraria com um backend real)
+            const btnEnviar = this.querySelector('.btn-enviar');
+            const textoOriginal = btnEnviar.textContent;
+            
+            // Estado de carregamento
+            btnEnviar.textContent = 'Enviando...';
+            btnEnviar.disabled = true;
+            
+            // Simular delay de envio
+            setTimeout(() => {
+                // Resetar formulário
+                this.reset();
+                
+                // Restaurar botão
+                btnEnviar.textContent = textoOriginal;
+                btnEnviar.disabled = false;
+                
+                // Feedback de sucesso
+                alert('Mensagem enviada com sucesso! Retornarei em breve.');
+            }, 2000);
+        });
+        
+        // ========== ANIMAÇÕES DE SCROLL ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animação
+        document.querySelectorAll('.galeria-item, .tecnica-item, .sobre-content, .contato-info').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // ========== HEADER COM EFEITO SCROLL ==========
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(245, 243, 240, 0.98)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'rgba(245, 243, 240, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // ========== PREVENÇÃO DE CLIQUE DIREITO NAS IMAGENS ==========
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+            
+            img.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+            });
+        });
+        
+        // ========== LOADING DAS IMAGENS ==========
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+            
+            img.addEventListener('error', function() {
+                this.style.opacity = '0.5';
+                this.alt = 'Imagem indisponível';
+            });
+        });
+        
+        // ========== EFEITO PARALLAX SUTIL NO HERO ==========
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            
+            if (heroImage && scrolled < window.innerHeight) {
+                heroImage.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+        
+        console.log('🎨 Portfólio Evee Silva carregado com sucesso!');
+    </script>
+</body>
+</html>
